@@ -1,0 +1,31 @@
+id,first_name,last_name,email,phone,company,title,industry,city,state,last_contacted,status
+1,Sarah,Chen,sarah.chen@acmecorp.com,415-555-0142,Acme Corp,VP of Marketing,Technology,San Francisco,CA,2025-11-03,active
+2,Sarah,Chen,s.chen@acme-corporation.com,,ACME Corporation,Marketing Director,Tech,SF,CA,2025-08-17,active
+3,James,Rodriguez,j.rodriguez@nexwave.io,510-555-0198,NexWave Solutions,CTO,SaaS,Oakland,CA,,active
+4,James,Rodriquez,james@nexwave.io,510-555-0198,Nexwave,Chief Technology Officer,Software,Oakland,CA,2025-09-22,active
+5,Emily,Nakamura,,415-555-0276,Bright Harbor Analytics,Data Science Lead,Analytics,San Francisco,CA,2025-10-15,active
+6,Michael,Thompson,m.thompson@oldcompany.com,650-555-0134,Velocity Partners,Senior Account Executive,Consulting,Palo Alto,CA,2024-03-10,active
+7,Priya,Sharma,priya@luminahealth.com,408-555-0321,Lumina Health,Head of Product,Healthcare,San Jose,CA,2025-12-01,active
+8,David,Park,david.park@gmail.com,,,,Software Engineer,,San Francisco,CA,2025-07-20,active
+9,Lisa,Wang,l.wang@terraforge.dev,415-555-0445,TerraForge,Engineering Manager,DevTools,San Francisco,CA,2025-11-28,active
+10,Lisa,Wang,lisa.wang@terraforge.dev,415-555-0445,Terra Forge Inc,Senior Engineering Manager,Developer Tools,San Francisco,CA,2026-01-14,active
+11,Marcus,Johnson,marcus@,312-555-0567,Windmill Data,Account Executive,Data Infrastructure,Chicago,IL,2025-06-05,active
+12,Anna,Kowalski,anna.k@streamline.ai,,,Streamline AI,VP of Sales,AI/ML,Austin,TX,2025-10-30,active
+13,Robert,Kim,robert.kim@zenithcloud.com,206-555-0789,Zenith Cloud,Solutions Architect,Cloud Computing,Seattle,WA,2025-09-15,active
+14,Robert,Kim,r.kim@zenithcloud.com,206-555-0790,Zenith Cloud Services,Sr. Solutions Architect,Cloud,Seattle,WA,2025-12-20,active
+15,Jennifer,O'Brien,,617-555-0234,ClearPath Consulting,,Consulting,Boston,MA,2025-04-18,active
+16,Carlos,Mendez,carlos@riverdelta.io,415-555-0891,River Delta,Founder & CEO,Fintech,San Francisco,CA,2025-11-11,active
+17,Akhileshwar Reddy,Songala,,281-760-6327,Lamar University,Student Associate tech,,Beaumont,CA,2026-02-03,active
+18,Aisha,Patel,aisha.patel@novaedge.com,408-555-0456,NovaEdge,Marketing Manager,Cybersecurity,San Jose,CA,2025-08-25,stale
+19,Tom,Bradley,tom.b@defunct-startup.com,650-555-0000,QuickShift Labs,Head of Growth,E-commerce,Menlo Park,CA,2024-01-15,active
+20,Sophie,Laurent,sophie@datapulse.co,212-555-0678,DataPulse,Chief Data Officer,Analytics,New York,NY,2025-12-10,active
+21,Wei,Zhang,w.zhang@unknown.com,,,Unknown Corp,,,,,inactive
+22,Rachel,Green,rachel.green@horizonmedia.com,310-555-0912,Horizon Media Group,Creative Director,Media,Los Angeles,CA,2025-10-05,active
+23,Daniel,Foster,dan.foster@horizonmedia.com,310-555-0913,Horizon Media,Sr. Creative Director,Advertising,LA,CA,2025-11-18,active
+24,Yuki,Tanaka,yuki@sparkgrid.io,415-555-0147,SparkGrid Energy,VP of Engineering,CleanTech,San Francisco,CA,2025-09-30,active
+25,Kevin,O'Malley,kevin.omalley@pinnacleai.com,415-555-0258,Pinnacle AI,Sales Director,Artificial Intelligence,San Francisco,CA,2025-07-12,stale
+26,Maria,Santos,maria.santos@greenleaf.bio,,GreenLeaf Biosciences,Research Director,Biotech,San Diego,CA,2025-11-22,active
+27,Alex,Rivera,alex@codesmith.dev,510-555-0369,CodeSmith,Full Stack Developer,Software Development,Berkeley,CA,2025-08-08,active
+28,Nina,Volkov,,650-555-0471,Apex Dynamics,Operations Manager,Manufacturing,Redwood City,CA,2025-05-20,active
+29,Hassan,Ali,hassan.ali@swiftlogic.com,408-555-0582,SwiftLogic,Platform Engineer,Enterprise Software,Santa Clara,CA,2025-12-15,active
+30,Olivia,Bennett,olivia@brightpathcrm.com,415-555-0693,BrightPath CRM,Customer Success Lead,SaaS,San Francisco,CA,2026-01-08,active
