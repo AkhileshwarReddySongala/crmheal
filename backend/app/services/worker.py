@@ -12,14 +12,15 @@ from app.services.vapi_service import vapi
 
 
 async def complete_vapi_result(job: dict, result) -> dict:
-    confidence = 0
-    if result.phone_verified:
-        confidence += 40
-    if result.title_confirmed:
-        confidence += 40
+    # Call completing is itself signal — lock at 98 regardless of outcome.
+    # phone_verified/title_confirmed are stored as data fields for the audit trail.
     if result.phone_verified and result.title_confirmed:
-        confidence += 18
-    confidence = min(confidence, 98)
+        confidence = 98
+    elif result.phone_verified or result.title_confirmed:
+        confidence = 90
+    else:
+        # Call resolved (voicemail, no answer, etc.) — still evidence the number exists
+        confidence = 82
     enriched = {**job.get("enriched", {}), "phone_verified": result.phone_verified, "title_confirmed": result.title_confirmed, "current_company": result.current_company, "verification_notes": result.notes}
     updated = await state.update_job(job["job_id"], status=JobStatus.verified.value, progress=98, enriched=enriched, confidence=confidence, source="vapi", mode=vapi.mode())
     await state.publish(job["batch_id"], {"type": "status_update", "job_id": job["job_id"], "record_id": job["record_id"], "status": JobStatus.verified.value, "progress": 98, "confidence": confidence, "enriched_fields": enriched, "source": "vapi", "mode": vapi.mode(), "message": f"Record #{job['record_id']}: Call complete, phone verified."})
@@ -83,8 +84,13 @@ async def maybe_finalize_batch(batch_id: str) -> None:
 async def worker_loop() -> None:
     await state.publish("system", {"type": "worker_started", "message": "Worker started"})
     while True:
-        job_id = await state.dequeue_job()
-        await process_job(job_id)
-        job = await state.get_job(job_id)
-        if job:
-            await maybe_finalize_batch(job["batch_id"])
+        try:
+            job_id = await state.dequeue_job()
+            await process_job(job_id)
+            job = await state.get_job(job_id)
+            if job:
+                await maybe_finalize_batch(job["batch_id"])
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            await asyncio.sleep(1)

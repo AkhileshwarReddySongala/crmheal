@@ -104,7 +104,7 @@ Rules:
         return parsed
 
     except Exception as exc:
-        raise RuntimeError(f"Akash reasoning failed: {exc}") from exc
+        raise RuntimeError(f"Akash reasoning failed: {type(exc).__name__}: {exc or 'no message'}") from exc
 
 
 async def decide_next_action(record: dict[str, Any]):

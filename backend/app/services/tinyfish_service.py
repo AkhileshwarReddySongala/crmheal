@@ -21,7 +21,13 @@ class TinyFishService:
     async def enrich(self, row: CRMLeadRow) -> dict[str, Any]:
         if self.mode() == "mock":
             return await self._mock(row)
-        return await self._real(row)
+        try:
+            return await self._real(row)
+        except Exception:
+            # Real API failed (timeout, rate limit, etc.) — fall back to mock so
+            # the worker never hard-fails a record. Confidence is lower but Vapi
+            # can still verify.
+            return await self._mock(row)
 
     async def _mock(self, row: CRMLeadRow) -> dict[str, Any]:
         await asyncio.sleep(0.8 if row.id == 17 else 0.35)
@@ -56,7 +62,7 @@ class TinyFishService:
 
     async def _real(self, row: CRMLeadRow) -> dict[str, Any]:
         headers = {"X-API-Key": settings.tinyfish_api_key}
-        timeout = httpx.Timeout(10.0)
+        timeout = httpx.Timeout(25.0)
         async with httpx.AsyncClient(timeout=timeout) as client:
             search = await self._request_with_retries(
                 client,

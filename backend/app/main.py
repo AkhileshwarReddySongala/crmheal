@@ -9,12 +9,24 @@ from app.services.redis_service import state
 from app.services.worker import worker_loop
 
 
+_worker_task: asyncio.Task | None = None
+
+
+def worker_status() -> str:
+    if _worker_task is None:
+        return "not_started"
+    if _worker_task.done():
+        return "crashed"
+    return "running"
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    global _worker_task
     await state.connect()
-    task = asyncio.create_task(worker_loop())
+    _worker_task = asyncio.create_task(worker_loop())
     yield
-    task.cancel()
+    _worker_task.cancel()
     await state.close()
 
 

@@ -6,6 +6,7 @@ from app.services.reasoner import reasoner_mode
 from app.services.redis_service import state
 from app.services.tinyfish_service import tinyfish
 from app.services.vapi_service import vapi
+import app.main as _main
 
 router = APIRouter(tags=["status"])
 
@@ -26,7 +27,7 @@ async def health():
         **ghost_health,
         "reasoner": reasoner_mode(),
         "akash_status": "configured" if settings.AKASH_API_KEY else "missing_key",
-        "worker": "started",
+        "worker": _main.worker_status(),
         "missing_env": {
             "TINYFISH_API_KEY": not bool(settings.tinyfish_api_key),
             "VAPI_API_KEY": not bool(settings.vapi_api_key),
